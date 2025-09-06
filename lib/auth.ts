@@ -131,7 +131,8 @@ export const auth = {
         id: user.id,
         email: user.email,
         name: user.name,
-        role: user.role
+        role: user.role,
+        created_at: user.created_at
       }
 
       console.log('Login successful for user:', authUser.email)

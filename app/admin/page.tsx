@@ -20,7 +20,8 @@ import {
   TrendingUp,
   Award,
   Clock,
-  ArrowRight
+  ArrowRight,
+  UserPlus
 } from "lucide-react"
 import type { AuthUser, DashboardStats, CourseWithStats } from "@/types/database"
 
@@ -118,8 +119,6 @@ export default function AdminDashboard() {
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     )
@@ -165,10 +164,12 @@ export default function AdminDashboard() {
             </Link>
 
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-3 px-4 py-2 bg-[var(--ui-input-bg)] rounded-xl">
-                <User className="h-4 w-4 text-[var(--text-secondary)]" />
-                <span className="text-sm font-medium text-[var(--fg-primary)]">{user?.name}</span>
-              </div>
+              <Link href="/admin/profile">
+                <div className="flex items-center space-x-3 px-4 py-2 bg-[var(--ui-input-bg)] rounded-xl hover:bg-[var(--brand-primary)] hover:text-black transition-all duration-200 cursor-pointer group">
+                  <User className="h-4 w-4 text-[var(--text-secondary)] group-hover:text-black" />
+                  <span className="text-sm font-medium text-[var(--fg-primary)] group-hover:text-black">{user?.name}</span>
+                </div>
+              </Link>
               <Button 
                 onClick={handleLogout}
                 variant="ghost" 
@@ -257,23 +258,23 @@ export default function AdminDashboard() {
         )}
 
         {/* Quick Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <Link href="/admin/courses/new" className="flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <Link href="/admin/courses/new" className="block">
             <Button className="w-full btn-primary h-12 text-base font-semibold">
               <Plus className="h-5 w-5 mr-2" />
-              Create New Course
+              Create Course
             </Button>
           </Link>
-          <Link href="/admin/students/new" className="flex-1">
+          <Link href="/admin/students" className="block">
             <Button className="w-full btn-secondary h-12 text-base font-semibold">
               <Users className="h-5 w-5 mr-2" />
-              Add Student
+              Manage Students
             </Button>
           </Link>
-          <Link href="/admin/analytics" className="flex-1">
+          <Link href="/admin/students/new" className="block">
             <Button variant="outline" className="w-full h-12 text-base font-semibold border-[var(--ui-card-border)] hover:bg-[var(--ui-input-bg)]">
-              <BarChart3 className="h-5 w-5 mr-2" />
-              View Analytics
+              <UserPlus className="h-5 w-5 mr-2" />
+              Add Student
             </Button>
           </Link>
         </div>

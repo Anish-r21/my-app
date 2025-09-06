@@ -5,6 +5,7 @@ export interface User {
     email: string
     password_hash?: string // Don't expose this in frontend
     name: string
+    phone?: string | null // NEW: Optional phone field
     role: 'admin' | 'student'
     created_at: string
     updated_at: string
@@ -95,8 +96,11 @@ export interface User {
     id: string
     email: string
     name: string
+    phone?: string | null
     role: 'admin' | 'student'
+    created_at: string
   }
+  
   
   // Dashboard Stats
   export interface DashboardStats {
@@ -177,13 +181,3 @@ export interface User {
     modules: Module[]
     enrollments: Enrollment[]
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
